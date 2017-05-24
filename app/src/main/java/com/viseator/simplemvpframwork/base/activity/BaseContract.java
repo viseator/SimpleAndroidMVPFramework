@@ -24,7 +24,7 @@ public class BaseContract {
 
     interface View extends BaseViewInterface<Presenter> {
         //Those method can also be put into the BaseViewInterface if required
-        void showData(List<BaseDataModel> datas);
+        void showData(List<BaseDataModel> data);
         void showMessage(String message);
 
     }

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SimpleMVPFramwork.iml" filepath="$PROJECT_DIR$/SimpleMVPFramwork.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SimpleMVPFramework.iml" filepath="$PROJECT_DIR$/SimpleMVPFramework.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

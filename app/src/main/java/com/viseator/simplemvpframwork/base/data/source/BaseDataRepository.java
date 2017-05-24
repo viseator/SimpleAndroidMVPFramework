@@ -58,6 +58,10 @@ public class BaseDataRepository implements BaseDataSource {
     }
 
     @Override
+    public void addData(BaseDataModel data) {
+    }
+
+    @Override
     public void refreshDataList() {
 
     }
