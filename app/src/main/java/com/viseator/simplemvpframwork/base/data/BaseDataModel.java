@@ -7,4 +7,13 @@ package com.viseator.simplemvpframwork.base.data;
  */
 
 public class BaseDataModel {
+    private String Id;
+
+    public void setId(String id) {
+        Id = id;
+    }
+
+    public String getId() {
+        return Id;
+    }
 }

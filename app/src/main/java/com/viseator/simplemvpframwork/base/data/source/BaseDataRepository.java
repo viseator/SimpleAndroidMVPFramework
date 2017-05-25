@@ -2,6 +2,9 @@ package com.viseator.simplemvpframwork.base.data.source;
 
 import com.viseator.simplemvpframwork.base.data.BaseDataModel;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -40,8 +43,19 @@ public class BaseDataRepository implements BaseDataSource {
     }
 
     @Override
-    public void getDataList(LoadDataListCallBack callback) {
+    public void getDataList(final LoadDataListCallBack callback) {
+        mLocalDataSource.getDataList(new LoadDataListCallBack() {
+            @Override
+            public void onDataListLoaded(List<BaseDataModel> data) {
+                refreshCache(data);
+                callback.onDataListLoaded(new ArrayList<>(mCachedData.values()));
+            }
 
+            @Override
+            public void onDataListNotAvailable() {
+
+            }
+        });
     }
 
     @Override
@@ -71,5 +85,14 @@ public class BaseDataRepository implements BaseDataSource {
     @Override
     public void deleteAllData() {
 
+    }
+    private void refreshCache(List<BaseDataModel> dataList) {
+        if(mCachedData == null){
+            mCachedData = new LinkedHashMap<>();
+        }
+        mCachedData.clear();
+        for (BaseDataModel data : dataList) {
+            mCachedData.put(data.getId(),data);
+        }
     }
 }
