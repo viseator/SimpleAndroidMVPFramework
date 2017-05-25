@@ -53,7 +53,7 @@ public class BaseDataRepository implements BaseDataSource {
 
             @Override
             public void onDataListNotAvailable() {
-
+                getDataFromRemote(callback);
             }
         });
     }
@@ -70,6 +70,7 @@ public class BaseDataRepository implements BaseDataSource {
 
     @Override
     public void addData(BaseDataModel data) {
+
     }
 
     @Override
@@ -85,6 +86,20 @@ public class BaseDataRepository implements BaseDataSource {
     @Override
     public void deleteAllData() {
 
+    }
+    private void getDataFromRemote(final LoadDataListCallBack callback){
+        mRemoteDataSource.getDataList(new LoadDataListCallBack() {
+            @Override
+            public void onDataListLoaded(List<BaseDataModel> data) {
+                refreshCache(data);
+                callback.onDataListLoaded(new ArrayList<BaseDataModel>(mCachedData.values()));
+            }
+
+            @Override
+            public void onDataListNotAvailable() {
+                callback.onDataListNotAvailable();
+            }
+        });
     }
     private void refreshCache(List<BaseDataModel> dataList) {
         if(mCachedData == null){

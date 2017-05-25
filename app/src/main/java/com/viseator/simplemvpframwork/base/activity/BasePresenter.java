@@ -1,5 +1,7 @@
 package com.viseator.simplemvpframwork.base.activity;
 
+import android.content.Intent;
+
 import com.viseator.simplemvpframwork.base.data.BaseDataModel;
 import com.viseator.simplemvpframwork.base.data.source.BaseDataRepository;
 import com.viseator.simplemvpframwork.base.data.source.BaseDataSource;
@@ -43,6 +45,11 @@ public class BasePresenter implements BaseContract.Presenter {
                 mView.showMessage("DataNotAvailable");
             }
         });
+    }
+
+    @Override
+    public void result(int requestCode, int resultCode,Intent data) {
+        //Handle the view intent result here.
     }
 
 

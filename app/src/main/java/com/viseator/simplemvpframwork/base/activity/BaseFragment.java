@@ -1,6 +1,7 @@
 package com.viseator.simplemvpframwork.base.activity;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.widget.Toast;
@@ -37,5 +38,10 @@ public class BaseFragment extends Fragment implements BaseContract.View {
     @Override
     public void showMessage(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        mPresenter.result(requestCode,resultCode,data);
     }
 }
