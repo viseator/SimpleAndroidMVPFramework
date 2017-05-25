@@ -1,7 +1,5 @@
 package com.viseator.simplemvpframwork.base.data.source;
 
-import android.test.InstrumentationTestSuite;
-
 import com.viseator.simplemvpframwork.base.data.BaseDataModel;
 
 import java.util.Map;
@@ -24,13 +22,13 @@ public class BaseDataRepository implements BaseDataSource {
     Map<String, BaseDataModel> mCachedData;
 
     private BaseDataRepository(BaseDataSource mLocalDataSource,
-                               BaseDataRepository mRemoteDataSource) {
+                               BaseDataSource mRemoteDataSource) {
         this.mLocalDataSource = mLocalDataSource;
         this.mRemoteDataSource = mRemoteDataSource;
     }
 
-    public static BaseDataRepository getInstance(BaseDataRepository mLocalDataSource,
-                                                 BaseDataRepository mRemoteDataSource) {
+    public static BaseDataRepository getInstance(BaseDataSource mLocalDataSource,
+                                                 BaseDataSource mRemoteDataSource) {
         if(INSTANCE == null){
             INSTANCE = new BaseDataRepository(mLocalDataSource, mRemoteDataSource);
         }
@@ -40,7 +38,6 @@ public class BaseDataRepository implements BaseDataSource {
     public static void destroyInstance() {
         INSTANCE = null;
     }
-    // TODO: 5/24/17
 
     @Override
     public void getDataList(LoadDataListCallBack callback) {
